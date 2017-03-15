@@ -3,3 +3,5 @@
 RemoteSystemsTempFiles/
 projectEuler/.classpath
 projectEuler/.project
+projectEuler/.settings
+projectEuler/target
