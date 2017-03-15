@@ -1,0 +1,5 @@
+.metadata/
+.recommenders/
+RemoteSystemsTempFiles/
+projectEuler/.classpath
+projectEuler/.project
