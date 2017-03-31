@@ -1,12 +1,12 @@
 package it.simonecasamassa.projectEuler.probl1;
 
-public class Solution {
+public class Solution_1 {
 
 	private final int START = 0;
 	private final int END = 1000;
 
 	public static void main(String[] args) {
-		new Solution().printSolution();
+		new Solution_1().printSolution();
 	}
 
 	public void printSolution() {
