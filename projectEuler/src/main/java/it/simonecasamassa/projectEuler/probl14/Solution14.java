@@ -1,40 +1,42 @@
 package it.simonecasamassa.projectEuler.probl14;
 
+import java.math.BigInteger;
+
 public class Solution14 {
 	
 	public static void main(String[] args) {
 		Solution14 resolver = new Solution14();
-		Integer result = resolver.findStartNumberOfCollatzSequenceFrom(1000000);
+		Integer result = resolver.findStartNumberOfCollatzSequenceFrom(BigInteger.valueOf(999999));
 		System.out.println(result);
 	}
 	
-	public Integer findStartNumberOfCollatzSequenceFrom(Integer startPoint) {
+	public Integer findStartNumberOfCollatzSequenceFrom(BigInteger startPoint) {
 		boolean foundSolution = false;
 		long now = System.currentTimeMillis();
 		Integer result = 0;
 		int longest = 0;
-		for (int i=startPoint; i>=1; i--) {
-			System.out.println("Iteration " + i);
-			Integer actualValue = i;
+		for (int i=startPoint.intValue(); i>=1; i--) {
+			//System.out.println("Iteration " + i);
+			BigInteger actualValue = BigInteger.valueOf(i);
 			int operands = 1;
 			do{
 				operands++;
-				if (actualValue % 2 == 0 && actualValue > 0) {
+				if (actualValue.mod(BigInteger.valueOf(2)).equals(BigInteger.ZERO) && actualValue.compareTo(BigInteger.ZERO) == 1) {
 					//pair branch
-					actualValue = actualValue / 2;
-				} else if (actualValue > 0){
+					actualValue = actualValue.divide(BigInteger.valueOf(2));
+				} else if (actualValue.compareTo(BigInteger.ZERO) == 1){
 					//odd branch
-					actualValue = (3*actualValue) + 1;
+					actualValue = (actualValue.multiply(BigInteger.valueOf(3))).add(BigInteger.ONE);
 				} else {
 					foundSolution = true;
 					operands = 0;
 				}
 				//System.out.println("actualValue: "+ actualValue);
-				if(actualValue == 1){
+				if(actualValue.equals(BigInteger.ONE)){
 					foundSolution = true;
 				}
 			} while (!foundSolution);
-			System.out.println("Operands " + operands);
+			System.out.println("Initial number " + i + " Operands " + operands);
 			if (operands > longest) {
 				longest = operands;
 				result = i;
